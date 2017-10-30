@@ -1,0 +1,23 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="treeviewhead" th:remove="tag">
+	<!-- Bootstrap treeview js-->
+	<script th:src="@{/bootstrap-treeview/js/bootstrap-treeview.min.js}"></script>
+	<!-- Bootstrap treeview css-->
+	<link rel="stylesheet" th:href="@{/bootstrap-treeview/css/bootstrap-treeview.min.css}" />
+	<!-- Treeview js-->
+	<script th:src="@{/treeview/js/treeview.js}"></script>
+	<!-- treeview css-->
+	<link rel="stylesheet" th:href="@{/treeview/css/treeview.css}" />
+</head>
+
+<div th:fragment="treeviewfragment(treeviewID)" th:remove="tag">
+	<div class="treeviewwrapper">
+		<h2>CMS Tree</h2>
+		<div th:id="${treeviewID}" class="treeview"></div>
+	</div>
+</div>
+
+
+

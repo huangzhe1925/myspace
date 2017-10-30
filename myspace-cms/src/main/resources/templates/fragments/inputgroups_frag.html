@@ -1,0 +1,37 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="inputgroupshead" th:remove="tag">
+	<script th:src="@{/inputgroups/js/inputtablegroups.js}"></script>
+</head>
+
+
+	<div th:fragment="tableInputGroups(groupsID)">
+		<div th:id=${groupsID} class="tableinputgroupswrapper">
+			<div class="content input-group">
+				<table>
+					<tr>
+						<td>
+							key: 
+						</td>
+						<td>
+							<input type="text" class="form-control propKey" placeholder="key">
+						</td>
+						<td>
+							&nbsp;value: 
+						</td>
+						<td>
+							<input type="text" class="form-control propValue" placeholder="value">
+						</td>
+						<td>
+							&nbsp;&nbsp;<button th:id="${groupsID}+'-appendBtn'" class="btn-default">[+]</button>
+						</td>
+					</tr>
+				</table>
+			
+			</div>
+		</div>
+	</div>
+
+
+</html>

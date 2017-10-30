@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="30 seconds">
+	<include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+	​
+	<!-- Define the log appender in application.properties -->
+	<springProperty name="logLevel" source="logging.level"/>
+	<springProperty name="logFile" source="logging.file"/>
+	
+	<!-- You can override this to have a custom pattern -->
+	<property name="CONSOLE_LOG_PATTERN"
+			  value="%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(%X{req.xForwardedFor}) %clr(---){faint} %clr(%X{logEntryType}) %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"/>
+
+	<!-- Appender to log to console -->
+	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<!-- Minimum logging level to be presented in the console logs-->
+			<level>DEBUG</level>
+		</filter>
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+	       	<pattern>${CONSOLE_LOG_PATTERN}</pattern>
+	       	<charset>UTF-8</charset>  
+	    </encoder>
+	</appender>
+	
+	<appender name="fileLog"  
+        class="ch.qos.logback.core.rolling.RollingFileAppender">  
+        <File>${logFile}</File>  
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">  
+            <fileNamePattern>${logFile}.%d</fileNamePattern>  
+        </rollingPolicy>  
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+	       	<pattern>${CONSOLE_LOG_PATTERN}</pattern>
+	       	<charset>UTF-8</charset>  
+	    </encoder>
+    </appender>  
+
+	<logger name="org.perf4j.TimingLogger" additivity="false" />
+	​
+	<root level="debug">
+		<appender-ref ref="console"/>
+	</root>
+	
+	<logger name="com.hz.myspace" level="${logLevel}">
+		<appender-ref ref="console"/>
+        <appender-ref ref="fileLog" />  
+    </logger>  
+</configuration>

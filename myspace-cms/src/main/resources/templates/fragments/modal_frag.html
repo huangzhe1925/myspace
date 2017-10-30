@@ -1,0 +1,67 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<!-- 模态框（Modal） -->
+	
+<head th:fragment="modalviewhead" th:remove="tag">
+	<script th:src="@{/modal/js/modalutil.js}"></script>
+</head>
+	
+	<div th:fragment="submitModal(modalID,modalTitle,modalBodyPage,modalBodyFrag)">
+		<div class="modal fade" th:id="${modalID}" tabindex="-1" role="dialog" th:aria-labelledby="${modalTitle}" aria-hidden="true">
+		    <div class="modal-dialog">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                <h4 class="modal-title" th:id="${modalID}+'-TitleContent'" th:text="${modalTitle}"></h4>
+		            </div>
+		            
+		            <div class="modal-body" th:include="${modalBodyPage} :: ${modalBodyFrag}"></div>
+		            <div class="modal-footer">
+		                <button type="button" th:id="${modalID}+'-closeBtn'" class="btn btn-default" data-dismiss="modal">Close</button>
+		                <button type="button" th:id="${modalID}+'-submitBtn'" class="btn btn-primary">Submit</button>
+		            </div>
+		        </div><!-- /.modal-content -->
+		    </div><!-- /.modal -->
+		</div>
+	</div>
+	
+	<div th:fragment="simpleContinueModal(modalID,modalTitle)">
+		<div class="modal fade" th:id="${modalID}" tabindex="-1" role="dialog" th:aria-labelledby="${modalTitle}" aria-hidden="true">
+		    <div class="modal-dialog">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                <h4 class="modal-title" th:id="${modalID}+'-TitleContent'" th:text="${modalTitle}"></h4>
+		            </div>
+		            
+		            <div class="modal-body" th:id="${modalID}+'-BodyText'">Do you want to continue?</div>
+		            
+		            <div class="modal-footer">
+		                <button type="button" th:id="${modalID}+'-closeBtn'" class="btn btn-default" data-dismiss="modal">Close</button>
+		                <button type="button" th:id="${modalID}+'-continueBtn'" class="btn btn-primary">Continue</button>
+		            </div>
+		        </div><!-- /.modal-content -->
+		    </div><!-- /.modal -->
+		</div>
+	</div>
+	
+	<div th:fragment="simpleConfirmModal(modalID,modalTitle)">
+		<div class="modal fade" th:id="${modalID}" tabindex="-1" role="dialog" th:aria-labelledby="${modalTitle}" aria-hidden="true">
+		    <div class="modal-dialog">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                <h4 class="modal-title" th:id="${modalID}+'-TitleContent'" th:text="${modalTitle}"></h4>
+		            </div>
+		            
+		            <div class="modal-body" th:id="${modalID}+'-BodyText'">Do you want to continue?</div>
+		            
+		            <div class="modal-footer">
+		                <button type="button" th:id="${modalID}+'-closeBtn'" class="btn btn-default" data-dismiss="modal">Close</button>
+		            </div>
+		        </div><!-- /.modal-content -->
+		    </div><!-- /.modal -->
+		</div>
+	</div>
+	
+</html>

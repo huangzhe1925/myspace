@@ -1,0 +1,56 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+	<div th:fragment="addNodeModalBody" >
+			<p><label for="newNodePath">Node Path: </label>
+				<span>
+			   		<input type="text" class="form-control" id="newNodePath" placeholder="please input node path"/>
+			   	</span>
+			</p>
+			<p>
+				<label for="newNodeName">Node Name: </label>
+				<span>
+					<input type="text" class="form-control" id="newNodeName" placeholder="please input node name" />
+				</span>
+			</p>
+			<hr>
+
+		<ul id="addNodeTabs" class="nav nav-tabs">
+			
+			<li class="active">
+				<a href="#propTab" data-toggle="tab">
+					Property 
+				</a>
+			</li>
+			<li>
+				<a href="#fileTab" data-toggle="tab">
+					File Property
+				</a>
+			</li>
+		</ul>
+	
+		<div id="addNodeTabsContent" class="tab-content">
+			<div class="tab-pane active" id="propTab">
+				<div th:insert="~{fragments/inputgroups_frag :: tableInputGroups('addPropInputGroups')}"></div>
+			</div>
+			<div class="tab-pane" id="fileTab">
+				<div class="checkbox">
+					<label> <input id="uploadercb" type="checkbox" >File Property</label>
+				</div>
+				<br>
+				<div id="fileTabContent">
+					<div>
+						<label for="newFilePropName">File Property Name: </label>
+				   		<input type="text" class="form-control" id="newFilePropName" placeholder="please input property name"/>
+					</div>
+					<br>
+					<div th:insert="~{fragments/fileuploader_frag :: singlefileuploaderfragment(fileuploader)}"></div>
+				 </div>
+			</div>
+		</div>
+		
+	</div>
+	
+	
+</html>

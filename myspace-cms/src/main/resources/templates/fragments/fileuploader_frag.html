@@ -1,0 +1,23 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="fileuploaderhead" th:remove="tag">
+	<!-- fileuploader js-->
+	<script th:src="@{/fileuploader/js/fileinput.min.js}"></script>
+	<script th:src="@{/fileuploader/js/fileuploader.js}"></script>
+	<!-- fileuploader css-->
+	<link rel="stylesheet" th:href="@{/fileuploader/css/fileinput-rtl.min.css}" />
+	<link rel="stylesheet" th:href="@{/fileuploader/css/fileinput.min.css}" />
+</head>
+
+<div th:fragment="singlefileuploaderfragment(uploaderID)" >
+	<form enctype="multipart/form-data">
+		<div class="form-group">
+			<input th:id="${uploaderID}" type="file" name="file" class="file-loading" >
+        </div>
+	</form>
+</div>
+
+
+
+</html>

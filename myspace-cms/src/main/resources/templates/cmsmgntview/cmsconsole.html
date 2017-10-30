@@ -1,0 +1,60 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<head >
+	<th:block th:insert="~{fragments/common/common_frag :: commonhead}" />
+	<th:block th:insert="~{fragments/tableview_frag :: tableviewhead}" />
+	<th:block th:insert="~{fragments/treeview_frag :: treeviewhead}" />
+	<th:block th:insert="~{fragments/fileuploader_frag :: fileuploaderhead}" />
+	<th:block th:insert="~{fragments/modal_frag :: modalviewhead}" />
+	<th:block th:insert="~{fragments/inputgroups_frag :: inputgroupshead}" />
+	<th:block th:insert="~{fragments/appendtabs_frag :: appendtabshead}" />
+	<th:block th:insert="~{fragments/ckeditor_frag :: ckeditorhead}" />
+	
+	<!-- cmsconsole js-->
+	<script th:src="@{/cmsconsole/js/cmsconsole.js}"></script>
+</head>
+
+<title>CMS Console</title>
+</head>
+<body >
+	<div class="left_resizable ui-widget-content">
+		<div class="left_btn_pan">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<div class="btn-group">
+						<button id="addNodeBtn" type="button" class="btn btn-default">Add Node</button>
+						<button id="delNodeBtn" type="button" class="btn btn-default">Delete Node</button>
+						<button id="modNodeBtn" type="button" class="btn btn-default">Modify Node</button>
+						<button id="refreshNodeBtn" type="button" class="btn btn-default">Refresh Node</button>
+						<button id="saveSessionBtn" type="button" class="btn btn-default">Save Session</button>
+						<button id="refreshSessionBtn" type="button" class="btn btn-default">Refresh Session</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="left_scroll">
+			<div th:insert="~{fragments/treeview_frag :: treeviewfragment(cmstree)}" ></div>
+		</div>
+		
+	</div>
+	<div class="right_resizable ui-widget-content">
+		<div class="right_top">
+			<div th:insert="~{fragments/appendtabs_frag :: appendTabs(editorTabs)}"></div>
+		</div>
+
+		<div class="right_bottom">
+			<div class="right_scroll">
+				<div th:insert="~{fragments/tableview_frag :: tableviewfragment(tableview)}"></div>
+			</div>
+		</div>
+	</div>
+
+	<div th:include="fragments/modal_frag::submitModal('addNodeModal','Add Node','cmsmgntview/fragments/cmsconsole_frag','addNodeModalBody')"></div>
+	<div th:include="fragments/modal_frag::simpleContinueModal('continueModal','Confirm to Continue')"></div>
+	<div th:include="fragments/modal_frag::simpleConfirmModal('confirmModal','Confirm')"></div>
+
+</body>
+</html>
